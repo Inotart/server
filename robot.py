@@ -724,13 +724,7 @@ def cmds(playername: str, msg: str) -> str:#处理玩家使用".命令"系统的
             except Exception as err:
                 errmsg = "cmdsrun插件报错, 信息:\n"+str(err)
                 log("serverMsg\\"+datetime.datetime.now().strftime("%Y-%m-%d.txt"), errmsg, encoding = "gbk", errors = "ignore", sendtogamewithERROR = True)
-        if ".admin" ==msg or ".admin help" ==msg:
-            sendcmd("/tellraw "+playername+r""" {"rawtext":[{"text":"§a输入.function help §e查询.function命令帮助\n§a输入.function [文件名] 执行function文件"}]}""")
-        if ".function help" ==msg:
-            sendcmd("/tellraw "+playername+r""" {"rawtext":[{"text":"§a.function [文件名:utf_8编码] \n例如:.function 小米.function      \n.function 小米.function 大米.function""")
         if playername in adminhigh:
-            if ".function " in msg and msg[0:10] ==".function "and msg != ".function help":
-                thread.start_new_thread(function_first_run,(msg[10:],playername))
             if ".exec " in msg:
                 #游戏内执行Python代码
                 #格式: .exec <语句>
@@ -776,7 +770,6 @@ def sendcmd(cmd: str) -> None:#租赁服执行命令的方法, 传入命令即�
 print("robot.exe is running.")
 print("The current system is:"+platform.system())
 run_fb_no_windows()
-load_function_first()
 read_cq_chatlogger()
 read_fbtoken_not_in()
 read_server()
