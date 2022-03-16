@@ -1,0 +1,1 @@
+say 我是文件a.mcfunction
